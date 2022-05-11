@@ -3,13 +3,16 @@ import 'package:home_page/Banco%20de%20Dados/dataBase.dart';
 import 'package:home_page/Drawer%20Items/Account.dart';
 import 'package:home_page/Drawer%20Items/Help.dart';
 import 'package:home_page/Drawer%20Items/Notificacoes.dart';
+import 'package:home_page/Drawer%20Items/Profile.dart';
 import 'package:home_page/Drawer%20Items/downs.dart';
-import 'package:home_page/Home/AdvancedConfigs.dart';
 import 'package:home_page/Home/Favoritos.dart';
 import 'package:home_page/Home/search.dart';
 import 'package:home_page/Login/Registrado.dart' as r;
 import 'package:home_page/Login/ResgateSenha.dart';
-import 'package:path/path.dart';
+import '../Configs/DataUsage.dart';
+import '../Configs/Notifications.dart';
+import '../Configs/Privacity.dart';
+import '../Drawer Items/Settings.dart';
 import '../Home/ButtonsPage.dart';
 import 'RecuperarSenha.dart';
 
@@ -39,6 +42,11 @@ void main() {
   runApp(MaterialApp(
     initialRoute: "/HomePage",
     routes: {
+      "/Notifications": (context) => Notifications(),
+      "/Privacity": (context) => Privacity(),
+      "/DataUsage": (context) => DataUsage(),
+      "/Settings": (context) => Settings(),
+      "/Profile": (context) => Profile(),
       "/Search": (context) => Search(),
       "/HomePage": (context) => HomePage(),
       "/buttonsPage": (context) => buttonsPage(),
@@ -47,7 +55,6 @@ void main() {
       "/notification": (context) => notification(),
       "/help": (context) => help(),
       "/checkBox": (context) => checkBox(),
-      "/switchEntry": (context) => switchEntry(),
       "/RecuperarSenha": (context) => RecuperarSenha(),
       "/ResgateSenha": (context) => ResgateSenha(),
       "/Registrar": (context) => Registrar(),
@@ -110,7 +117,7 @@ class HomePage extends StatelessWidget {
                         labelText: "E-mail",
                         labelStyle: TextStyle(
                           fontSize: 27,
-                          color: Colors.white,
+                          color: Colors.white.withAlpha(700),
                         )),
                   ),
                   SizedBox(
@@ -131,7 +138,7 @@ class HomePage extends StatelessWidget {
                           labelText: "Senha",
                           labelStyle: TextStyle(
                             fontSize: 27,
-                            color: Colors.white,
+                            color: Colors.white.withAlpha(700),
                           )),
                       obscureText: true),
                   SizedBox(

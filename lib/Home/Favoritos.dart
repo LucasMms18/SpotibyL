@@ -117,13 +117,13 @@ class _checkBoxState extends State<checkBox> {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                print("Comida brasileira: " +
+                print("Rock: " +
                     _select.toString() +
-                    "Comida americana: " +
+                    "Eletrônica: " +
                     _select2.toString() +
-                    "Comida mexicana: " +
+                    "Sertanejo: " +
                     _select3.toString() +
-                    "Comida japonesa:" +
+                    "Pagode:" +
                     _select4.toString());
               },
             )

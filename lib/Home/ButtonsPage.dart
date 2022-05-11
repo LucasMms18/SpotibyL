@@ -9,8 +9,6 @@ class buttonsPage extends StatefulWidget {
   State<buttonsPage> createState() => _homebuttonsPage();
 }
 
-bool _status = true;
-
 class _homebuttonsPage extends State<buttonsPage> {
   AudioPlayer audioPlayer = AudioPlayer();
   bool primeriaExecucao = true;
@@ -113,6 +111,18 @@ class _homebuttonsPage extends State<buttonsPage> {
               },
             ),
             ListTile(
+              leading: Icon(Icons.settings, color: Colors.white),
+              title: Text(
+                "Configurações",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+              onTap: () {
+                setState(() {
+                  Navigator.of(context).pushNamed("/Settings");
+                });
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.help, color: Colors.white),
               title: Text(
                 "Central de ajuda",
@@ -134,7 +144,7 @@ class _homebuttonsPage extends State<buttonsPage> {
                 showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                          title: Text("Tem certeza?"),
+                          title: Text("Fazer logout?"),
                           content: Text("Você quer mesmo se deslogar?"),
                           actions: [
                             TextButton(
@@ -185,67 +195,93 @@ class _homebuttonsPage extends State<buttonsPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        buildProgressBar(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: GestureDetector(
-                                child: Image.asset(
-                                  imagePause,
-                                  width: 50,
-                                  height: 50,
-                                ),
-                                onTap: () {
-                                  _pausar();
-                                },
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: GestureDetector(
-                                child: Image.asset(
-                                  imagePlay,
-                                  width: 50,
-                                  height: 50,
-                                ),
-                                onTap: () {
-                                  _executar();
-                                },
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(4),
-                              child: GestureDetector(
-                                child: Image.asset(
-                                  imageStop,
-                                  width: 50,
-                                  height: 50,
-                                ),
-                                onTap: () {
-                                  _parar();
-                                },
-                              ),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 60,
                         ),
-                        Slider(
-                            value: volume,
-                            min: 0,
-                            max: 100,
-                            divisions: 100,
-                            label: label,
-                            onChanged: (novoVolume) {
-                              setState(() {
-                                volume = novoVolume;
-                                label =
-                                    "Volume: " + novoVolume.round().toString();
-                              });
-                              print("Volume selecionado: " + volume.toString());
-                              audioPlayer.setVolume(novoVolume);
-                            }),
+                        Container(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                child: Padding(
+                                  padding: EdgeInsets.all(4),
+                                  child: GestureDetector(
+                                    child: Icon(
+                                      Icons.pause,
+                                      size: 44,
+                                      color: Colors.black87,
+                                    ),
+                                    onTap: () {
+                                      _pausar();
+                                    },
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: GestureDetector(
+                                  child: Icon(
+                                    Icons.play_arrow,
+                                    size: 44,
+                                    color: Colors.black87,
+                                  ),
+                                  onTap: () {
+                                    _executar();
+                                  },
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: GestureDetector(
+                                  child: Icon(
+                                    Icons.stop,
+                                    size: 44,
+                                    color: Colors.black87,
+                                  ),
+                                  onTap: () {
+                                    _parar();
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: GestureDetector(
+                                  child: Icon(Icons.music_note_rounded,
+                                      size: 44, color: Colors.black87),
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                              title: Text("Volume"),
+                                              content: Slider(
+                                                value: volume,
+                                                min: 0,
+                                                max: 100,
+                                                divisions: 100,
+                                                label: label,
+                                                onChanged: (novoVolume) {
+                                                  setState(() {
+                                                    volume = novoVolume;
+                                                    label = "Volume: " +
+                                                        novoVolume.round().toString();
+                                                  });
+                                                },
+                                              ),
+                                            ));
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        buildProgressBar(),
                       ],
                     ),
                   ),
@@ -288,25 +324,6 @@ class _homebuttonsPage extends State<buttonsPage> {
                         style: TextStyle(
                             fontSize: 23, fontWeight: FontWeight.normal),
                       )),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                          shadowColor:
-                              MaterialStateProperty.all(Colors.transparent),
-                          backgroundColor: MaterialStateProperty.all(
-                              Colors.black.withOpacity(0.2)),
-                          elevation: MaterialStateProperty.all(5),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadiusDirectional.circular(30)))),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed("/switchEntry");
-                      },
-                      child: Text(
-                        "Configurações",
-                        style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.normal),
-                      )),
                 ],
               ),
             ),
@@ -331,7 +348,7 @@ class _homebuttonsPage extends State<buttonsPage> {
             Expanded(
               child: Container(),
             ),
-            Text('3:02')
+            Text('3:00')
           ],
         )
       ],
