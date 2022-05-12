@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:home_page/Banco%20de%20Dados/dataBase.dart';
 import 'package:home_page/Drawer%20Items/Account.dart';
 import 'package:home_page/Drawer%20Items/Help.dart';
-import 'package:home_page/Drawer%20Items/Notificacoes.dart';
+import 'package:home_page/Drawer%20Items/ListasSalvas.dart';
 import 'package:home_page/Drawer%20Items/Profile.dart';
 import 'package:home_page/Drawer%20Items/downs.dart';
 import 'package:home_page/Home/Favoritos.dart';
 import 'package:home_page/Home/search.dart';
 import 'package:home_page/Login/Registrado.dart' as r;
-import 'package:home_page/Login/ResgateSenha.dart';
 import '../Configs/DataUsage.dart';
 import '../Configs/Notifications.dart';
 import '../Configs/Privacity.dart';
@@ -56,7 +55,6 @@ void main() {
       "/help": (context) => help(),
       "/checkBox": (context) => checkBox(),
       "/RecuperarSenha": (context) => RecuperarSenha(),
-      "/ResgateSenha": (context) => ResgateSenha(),
       "/Registrar": (context) => Registrar(),
       "/Registrado": (context) => r.Registrado(),
     },
@@ -105,7 +103,7 @@ class HomePage extends StatelessWidget {
                   ),
                   TextField(
                     textInputAction: TextInputAction.next,
-                    style: TextStyle(color: Colors.white, fontSize: 17),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                     controller: _email,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.emailAddress,
@@ -121,11 +119,11 @@ class HomePage extends StatelessWidget {
                         )),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   TextField(
                       textInputAction: TextInputAction.done,
-                      style: TextStyle(color: Colors.white, fontSize: 17),
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                       maxLength: 8,
                       controller: _password,
                       textAlign: TextAlign.center,
@@ -141,23 +139,41 @@ class HomePage extends StatelessWidget {
                             color: Colors.white.withAlpha(700),
                           )),
                       obscureText: true),
-                  SizedBox(
-                    height: 10,
-                  ),
                   ElevatedButton(
-                    child: Text("Login"),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(fontSize: 18),
+                    ),
                     onPressed: () {
                       _login(context);
                     },
                   ),
                   ElevatedButton(
-                    child: Text("Registrar-se"),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Registrar-se",
+                      style: TextStyle(fontSize: 18),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pushNamed("/Registrar");
                     },
                   ),
                   ElevatedButton(
-                    child: Text("Esqueci minha senha"),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Esqueci minha senha",
+                      style: TextStyle(fontSize: 18),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pushNamed("/RecuperarSenha");
                     },
@@ -182,6 +198,17 @@ class HomePage extends StatelessWidget {
             .pushNamedAndRemoveUntil("/buttonsPage", (route) => false);
         _email.clear();
         _password.clear();
+      } else {
+        final snackBar = SnackBar(
+          content: Text(
+            "Por favor insira o email e senha corretos!",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+          duration: Duration(seconds: 1),
+          backgroundColor: Colors.black,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     });
   }

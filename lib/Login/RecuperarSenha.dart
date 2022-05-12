@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/Login/ResgateSenha.dart';
+import 'package:home_page/Login/main.dart';
 
 class RecuperarSenha extends StatefulWidget {
   const RecuperarSenha({Key? key}) : super(key: key);
@@ -13,33 +13,58 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: Text(
           "Esqueci minha senha",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 24),
         ),
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
       ),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
           child: Column(
-        children: <Widget>[
-          Container(),
+        children: [
+          SizedBox(
+            height: 10,
+          ),
           TextFormField(
+            style: TextStyle(color: Colors.white, fontSize: 21),
             textAlign: TextAlign.center,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
+                fillColor: Colors.transparent,
+                filled: true,
                 floatingLabelAlignment: FloatingLabelAlignment.center,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
-                label: Text("Informe seu Email")),
+                label: Text("Informe seu Email",
+                    style: TextStyle(fontSize: 18, color: Colors.white))),
+          ),
+          SizedBox(
+            height: 20,
           ),
           ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResgateSenha()));
-              },
-              child: Text(
-                "Confirmar:",
-                style: TextStyle(fontSize: 23),
-              ))
+            child: Text(
+              "Confirmar:",
+              style: TextStyle(fontSize: 23, color: Colors.black),
+            ),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20))),
+            onPressed: () {
+              final snackBar = SnackBar(
+                  backgroundColor: Colors.white,
+                  duration: Duration(seconds: 3),
+                  content: Text(
+                    "Requisição para nova senha enviada com sucesso, confira sua caixa de email!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  "/HomePage", (Route<dynamic> route) => false);
+            },
+          )
         ],
       )),
     );

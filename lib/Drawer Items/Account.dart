@@ -29,16 +29,14 @@ class _AccountState extends State<Account> {
             children: [
               UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Colors.transparent),
-                accountName: Text("Ragnar Lothbrok",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 16
-                ),),
-                accountEmail: Text("ragnar.lothbrok@sparkag.com.br",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 15
-                ),),
+                accountName: Text(
+                  "Ragnar Lothbrok",
+                  style: TextStyle(color: Colors.black87, fontSize: 16),
+                ),
+                accountEmail: Text(
+                  "ragnar.lothbrok@sparkag.com.br",
+                  style: TextStyle(color: Colors.black87, fontSize: 15),
+                ),
                 currentAccountPicture: CircleAvatar(
                   radius: 30,
                   backgroundImage: NetworkImage(
@@ -49,7 +47,8 @@ class _AccountState extends State<Account> {
               SizedBox(
                 height: 15,
               ),
-              ListTile(iconColor: Colors.black87,
+              ListTile(
+                iconColor: Colors.black87,
                 leading: Icon(Icons.email_outlined),
                 title: Text(
                   "E-mail",
@@ -57,13 +56,14 @@ class _AccountState extends State<Account> {
                 ),
                 onTap: () => Navigator.of(context).pushNamed("/Email"),
               ),
-              ListTile(iconColor: Colors.black87,
+              ListTile(
+                iconColor: Colors.black87,
                 leading: Icon(Icons.phone),
                 title: Text(
                   "Número de celular",
                   style: TextStyle(fontSize: 18),
                 ),
-                onTap: () => Navigator.of(context).pushNamed("/Email"),
+                onTap: () => Navigator.of(context).pushNamed("/PhoneNumber"),
               ),
               ListTile(
                 iconColor: Colors.black87,

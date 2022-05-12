@@ -33,7 +33,8 @@ class _SearchState extends State<Search> {
                 filled: true,
                 floatingLabelAlignment: FloatingLabelAlignment.start,
                 labelText: "Pesquisar",
-                labelStyle: TextStyle(fontSize: 20, color: Colors.white.withAlpha(140))),
+                labelStyle: TextStyle(
+                    fontSize: 20, color: Colors.white.withAlpha(140))),
           )
         ],
       ),

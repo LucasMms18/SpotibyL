@@ -36,32 +36,34 @@ class _RegistrarState extends State<Registrar> {
           SingleChildScrollView(
             child: Form(
               key: _formkey,
-              child: Column(children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              "https://fulldna.com.br/assets/img/registre-se.jpg"),
-                          invertColors: false,
-                          fit: BoxFit.contain)),
-                  height: 90,
+              child: Column(children: [
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "Criar conta:",
+                  style: TextStyle(
+                      fontSize: 27, color: Colors.white, letterSpacing: 2),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 25,
                 ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
                   controller: _nameController,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(50),
+                      fillColor: Colors.black.withAlpha(100),
                       filled: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Nome:",
                       labelStyle: TextStyle(
-                          letterSpacing: 2, fontSize: 24, color: Colors.white)),
+                          letterSpacing: 2,
+                          fontSize: 24,
+                          color: Colors.white.withAlpha(210))),
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       return ("Por favor insira um nome!");
@@ -72,22 +74,22 @@ class _RegistrarState extends State<Registrar> {
                     _name = name;
                   },
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
                   controller: _Email,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(50),
+                      fillColor: Colors.black.withAlpha(100),
                       filled: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email:",
                       labelStyle: TextStyle(
-                          letterSpacing: 2, fontSize: 24, color: Colors.white)),
+                          letterSpacing: 2,
+                          fontSize: 24,
+                          color: Colors.white.withAlpha(210))),
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       return ("Por favor insira um Email!");
@@ -98,22 +100,22 @@ class _RegistrarState extends State<Registrar> {
                     _email = email;
                   },
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
                   controller: _confirmEmail,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(50),
+                      fillColor: Colors.black.withAlpha(100),
                       filled: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Confirme seu Email:",
                       labelStyle: TextStyle(
-                          letterSpacing: 2, fontSize: 24, color: Colors.white)),
+                          letterSpacing: 2,
+                          fontSize: 24,
+                          color: Colors.white.withAlpha(210))),
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       return ("Por favor insira o mesmo Email!");
@@ -127,22 +129,22 @@ class _RegistrarState extends State<Registrar> {
                     _email = email;
                   },
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
                   controller: _birthdayController,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.datetime,
                   decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(50),
+                      fillColor: Colors.black.withAlpha(100),
                       filled: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Data de nascimento:",
                       labelStyle: TextStyle(
-                          letterSpacing: 2, fontSize: 24, color: Colors.white)),
+                          letterSpacing: 2,
+                          fontSize: 24,
+                          color: Colors.white.withAlpha(210))),
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       return ("Por favor insira sua data de nascimento!");
@@ -156,10 +158,8 @@ class _RegistrarState extends State<Registrar> {
                     _birthday = birthday;
                   },
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
                   controller: _password,
                   textAlign: TextAlign.center,
@@ -167,13 +167,15 @@ class _RegistrarState extends State<Registrar> {
                   maxLength: 8,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(50),
+                      fillColor: Colors.black.withAlpha(100),
                       filled: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Senha:",
                       labelStyle: TextStyle(
-                          letterSpacing: 2, fontSize: 24, color: Colors.white)),
+                          letterSpacing: 2,
+                          fontSize: 24,
+                          color: Colors.white.withAlpha(210))),
                   obscureText: true,
                   validator: (String? value) {
                     if (value!.isEmpty) {
@@ -183,6 +185,7 @@ class _RegistrarState extends State<Registrar> {
                   },
                 ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.done,
                   controller: _confirmpassword,
                   textAlign: TextAlign.center,
@@ -190,13 +193,15 @@ class _RegistrarState extends State<Registrar> {
                   maxLength: 8,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(50),
+                      fillColor: Colors.black.withAlpha(100),
                       filled: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Confirme a senha:",
                       labelStyle: TextStyle(
-                          letterSpacing: 2, fontSize: 24, color: Colors.white)),
+                          letterSpacing: 2,
+                          fontSize: 24,
+                          color: Colors.white.withAlpha(210))),
                   obscureText: true,
                   validator: (String? value) {
                     if (value!.isEmpty) {
@@ -209,7 +214,14 @@ class _RegistrarState extends State<Registrar> {
                   },
                 ),
                 ElevatedButton(
-                  child: Text("Registrar"),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20))),
+                  child: Text(
+                    "Registre-se",
+                    style: TextStyle(fontSize: 19),
+                  ),
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
                       BaseData()
@@ -225,7 +237,16 @@ class _RegistrarState extends State<Registrar> {
                                 builder: (context) => Registrado()));
                       });
                     } else {
-                      print("Sem sucesso!");
+                      final snackBar = SnackBar(
+                        content: Text(
+                          "Por favor preencha corretamente as especificações!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: Colors.black,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
                 ),
