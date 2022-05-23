@@ -31,7 +31,7 @@ class _downloadsState extends State<downloads> {
               ),
               leading: Image.network(
                   "https://upload.wikimedia.org/wikipedia/pt/7/78/Red_Hot_Chili_Peppers_-_Californication.jpg"),
-
+              trailing: Icon(Icons.play_circle, color: Colors.black),
             );
           }),
     );

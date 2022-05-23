@@ -8,13 +8,14 @@ import 'package:home_page/Drawer%20Items/downs.dart';
 import 'package:home_page/Home/Favoritos.dart';
 import 'package:home_page/Home/search.dart';
 import 'package:home_page/Login/Registrado.dart' as r;
+import 'package:path/path.dart';
 import '../Configs/DataUsage.dart';
 import '../Configs/Notifications.dart';
 import '../Configs/Privacity.dart';
 import '../Drawer Items/Settings.dart';
 import '../Home/ButtonsPage.dart';
+import '../Home/bottom_navigation_bar.dart';
 import 'RecuperarSenha.dart';
-
 import 'Registrar.dart';
 
 void main() {
@@ -48,7 +49,7 @@ void main() {
       "/Profile": (context) => Profile(),
       "/Search": (context) => Search(),
       "/HomePage": (context) => HomePage(),
-      "/buttonsPage": (context) => buttonsPage(),
+      "/buttonsPage": (context) => ButtonsPage(),
       "/downloads": (context) => downloads(),
       "/Account": (context) => Account(),
       "/notification": (context) => notification(),
@@ -57,6 +58,7 @@ void main() {
       "/RecuperarSenha": (context) => RecuperarSenha(),
       "/Registrar": (context) => Registrar(),
       "/Registrado": (context) => r.Registrado(),
+      "/BottomNavigationBae": (context) => BottomNavigationBae()
     },
     theme: ThemeData(
       colorScheme: ColorScheme.fromSwatch(
@@ -73,8 +75,8 @@ String logo = "imagens/logo.png";
 bool _status = true;
 String urlMain =
     "https://s-media-cache-ak0.pinimg.com/564x/b6/07/41/b60741b4bbf181d15bf26b05c55ab60d.jpg";
-TextEditingController _email = TextEditingController();
-TextEditingController _password = TextEditingController();
+TextEditingController _email = TextEditingController(text: "teste123@gmail.com");
+TextEditingController _password = TextEditingController(text: "teste123");
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

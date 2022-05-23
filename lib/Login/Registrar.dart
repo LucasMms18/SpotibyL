@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home_page/Banco%20de%20Dados/dataBase.dart';
 import 'package:home_page/Banco%20de%20Dados/registrerUsers.dart';
@@ -13,17 +12,18 @@ class Registrar extends StatefulWidget {
 
 class _RegistrarState extends State<Registrar> {
   bool whateever = false;
-  String? _name, _email, _birthday;
 
   TextEditingController _password = TextEditingController();
   TextEditingController _confirmpassword = TextEditingController();
   TextEditingController _confirmEmail = TextEditingController();
-  TextEditingController _Email = TextEditingController();
+  TextEditingController _emailRegister = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _birthdayController = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   String urlRegistrar =
       "https://4.bp.blogspot.com/-wTSRb4D_YN0/WfnUE54KTxI/AAAAAAAAMxA/hKTWOAce9IIjDWBy41IDiPV9sIuSv3AcACLcBGAs/s1600/papel%2Bde%2Bparede%2Bcelular.jpg";
+  String? _name, _email, _birthday;
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -77,7 +77,7 @@ class _RegistrarState extends State<Registrar> {
                 TextFormField(
                   style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
-                  controller: _Email,
+                  controller: _emailRegister,
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -120,7 +120,7 @@ class _RegistrarState extends State<Registrar> {
                     if (value!.isEmpty) {
                       return ("Por favor insira o mesmo Email!");
                     }
-                    if (_Email.text != _confirmEmail.text) {
+                    if (_emailRegister.text != _confirmEmail.text) {
                       return ("Os Emails não são iguais!");
                     }
                     return null;
@@ -163,7 +163,6 @@ class _RegistrarState extends State<Registrar> {
                   textInputAction: TextInputAction.next,
                   controller: _password,
                   textAlign: TextAlign.center,
-                  maxLengthEnforced: true,
                   maxLength: 8,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -189,7 +188,6 @@ class _RegistrarState extends State<Registrar> {
                   textInputAction: TextInputAction.done,
                   controller: _confirmpassword,
                   textAlign: TextAlign.center,
-                  maxLengthEnforced: true,
                   maxLength: 8,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(

@@ -54,7 +54,7 @@ class _AccountState extends State<Account> {
                   "E-mail",
                   style: TextStyle(fontSize: 18),
                 ),
-                onTap: () => Navigator.of(context).pushNamed("/Email"),
+                onTap: () => Navigator.of(context).pushNamed("/BottomNavigationBae"),
               ),
               ListTile(
                 iconColor: Colors.black87,

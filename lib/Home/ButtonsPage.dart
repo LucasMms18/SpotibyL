@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/Drawer%20Items/Account.dart';
+import 'package:home_page/Home/Favoritos.dart';
 import 'package:home_page/Login/main.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class buttonsPage extends StatefulWidget {
-  const buttonsPage({Key? key}) : super(key: key);
+import 'search.dart';
+
+class ButtonsPage extends StatefulWidget {
+  const ButtonsPage({Key? key}) : super(key: key);
 
   @override
-  State<buttonsPage> createState() => _homebuttonsPage();
+  State<ButtonsPage> createState() => _homeButtonsPage();
 }
 
-class _homebuttonsPage extends State<buttonsPage> {
+class _homeButtonsPage extends State<ButtonsPage> {
   AudioPlayer audioPlayer = AudioPlayer();
   bool primeriaExecucao = true;
 
@@ -42,7 +47,12 @@ class _homebuttonsPage extends State<buttonsPage> {
   String urlPlay = "imagens/imageplay.png";
 
   int _screenSelect = 0;
-
+static const List<Widget> _screensOptions =[
+  ButtonsPage(),
+  Search(),
+  checkBox(),
+  Account()
+];
   void _onScreenTapped(int index) {
     setState(() {
       _screenSelect = index;
@@ -52,39 +62,6 @@ class _homebuttonsPage extends State<buttonsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _screenSelect,
-        iconSize: 25,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.black,
-        selectedItemColor: Color(0xff2196f3),
-        unselectedItemColor: Colors.white,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                  "/buttonsPage", (Route<dynamic> route) => false);
-              break;
-            case 1:
-              Navigator.of(context).pushNamed("/Search");
-              break;
-            case 2:
-              Navigator.of(context).pushNamed("/Library");
-              break;
-            case 3:
-              Navigator.of(context).pushNamed("/Premium");
-              break;
-          }
-        },
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Pesquisar"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.library_music), label: "Biblioteca"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.workspace_premium), label: "Premium")
-        ],
-      ),
       drawer: Drawer(
         backgroundColor: Color(0xff2196f3),
         child: Column(
@@ -107,10 +84,16 @@ class _homebuttonsPage extends State<buttonsPage> {
               currentAccountPictureSize: const Size.square(100),
               otherAccountsPicturesSize: const Size.square(25),
               otherAccountsPictures: [
-                Icon(Icons.facebook, color: Color(0xff2196f3)),
-                Icon(Icons.alternate_email, color: Color(0xff2196f3)),
-                Icon(Icons.apple, color: Color(0xff2196f3)),
-                Icon(Icons.camera, color: Color(0xff2196f3))
+                GestureDetector(
+                    child: Icon(Icons.facebook, color: Color(0xff2196f3)),
+                    onTap: () => launchUrl(Uri.parse("https://facebook.com/"))),
+                GestureDetector(
+                    child:
+                        Icon(Icons.alternate_email, color: Color(0xff2196f3)),
+                    onTap: () => launchUrl(Uri.parse("https://gmail.com/"))),
+                GestureDetector(
+                    child: Icon(Icons.apple, color: Color(0xff2196f3)),
+                    onTap: () => launchUrl(Uri.parse("https://apple.com/")))
               ],
             ),
             SizedBox(
@@ -214,6 +197,7 @@ class _homebuttonsPage extends State<buttonsPage> {
                   SizedBox(
                     height: 30,
                   ),
+
                   ///TODO Animar a logo
                   AnimatedContainer(
                     duration: Duration(seconds: 3),

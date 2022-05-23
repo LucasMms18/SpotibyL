@@ -39,6 +39,7 @@ dependencies:
   audioplayers: ^0.20.1
   path:
   fluttericon: ^2.0.0
+  url_launcher: ^6.1.2
 
 dev_dependencies:
   flutter_test:
