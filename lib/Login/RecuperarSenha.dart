@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/Login/main.dart';
 
 class RecuperarSenha extends StatefulWidget {
   const RecuperarSenha({Key? key}) : super(key: key);

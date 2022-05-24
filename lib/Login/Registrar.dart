@@ -3,6 +3,9 @@ import 'package:home_page/Banco%20de%20Dados/dataBase.dart';
 import 'package:home_page/Banco%20de%20Dados/registrerUsers.dart';
 import 'Registrado.dart';
 
+TextEditingController _emailRegister = TextEditingController();
+final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
 class Registrar extends StatefulWidget {
   const Registrar({Key? key}) : super(key: key);
 
@@ -16,13 +19,11 @@ class _RegistrarState extends State<Registrar> {
   TextEditingController _password = TextEditingController();
   TextEditingController _confirmpassword = TextEditingController();
   TextEditingController _confirmEmail = TextEditingController();
-  TextEditingController _emailRegister = TextEditingController();
   TextEditingController _nameController = TextEditingController();
-  TextEditingController _birthdayController = TextEditingController();
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   String urlRegistrar =
       "https://4.bp.blogspot.com/-wTSRb4D_YN0/WfnUE54KTxI/AAAAAAAAMxA/hKTWOAce9IIjDWBy41IDiPV9sIuSv3AcACLcBGAs/s1600/papel%2Bde%2Bparede%2Bcelular.jpg";
-  String? _name, _email, _birthday;
+  String? _name, _email;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,35 +133,6 @@ class _RegistrarState extends State<Registrar> {
                 TextFormField(
                   style: TextStyle(color: Colors.white, fontSize: 18),
                   textInputAction: TextInputAction.next,
-                  controller: _birthdayController,
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.datetime,
-                  decoration: InputDecoration(
-                      fillColor: Colors.black.withAlpha(100),
-                      filled: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "Data de nascimento:",
-                      labelStyle: TextStyle(
-                          letterSpacing: 2,
-                          fontSize: 24,
-                          color: Colors.white.withAlpha(210))),
-                  validator: (String? value) {
-                    if (value!.isEmpty) {
-                      return ("Por favor insira sua data de nascimento!");
-                    }
-                    if (value.length < 10 || value.length >= 11) {
-                      return ("Por favor insira uma data válida!");
-                    }
-                    return null;
-                  },
-                  onSaved: (String? birthday) {
-                    _birthday = birthday;
-                  },
-                ),
-                TextFormField(
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                  textInputAction: TextInputAction.next,
                   controller: _password,
                   textAlign: TextAlign.center,
                   maxLength: 8,
@@ -224,10 +196,10 @@ class _RegistrarState extends State<Registrar> {
                     if (_formkey.currentState!.validate()) {
                       BaseData()
                           .save(Register(
-                              name: _nameController.text,
-                              email: _confirmEmail.text,
-                              password: _confirmpassword.text,
-                              birthday: int.parse(_birthdayController.text)))
+                        name: _nameController.text,
+                        email: _confirmEmail.text,
+                        password: _confirmpassword.text,
+                      ))
                           .then((value) {
                         Navigator.push(
                             context,

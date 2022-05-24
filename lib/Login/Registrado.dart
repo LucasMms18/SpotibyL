@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'main.dart';
 
 class Registrado extends StatefulWidget {
   const Registrado({Key? key}) : super(key: key);

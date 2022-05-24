@@ -32,8 +32,7 @@ class BaseData {
         "id INTEGER PRIMARY KEY, "
         "name VARCHAR, "
         "email VARCHAR, "
-        "password VARCHAR, "
-        "birthday INTEGER)");
+        "password VARCHAR)");
   }
 
   _onUpgradeDB(Database db, int oldVersion, int newVersion) async {
