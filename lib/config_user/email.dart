@@ -20,13 +20,11 @@ class _EmailState extends State<Email> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ListTile(
-                title: Text("Trocar endereço de E-mail",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center),
-                subtitle: Text("Insira seu E-mail:",
-                    style: TextStyle(fontSize: 17),
-                    textAlign: TextAlign.center),
-              ),
+                  title: Text("Trocar endereço de E-mail",
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                  subtitle: Text("Insira seu E-mail:",
+                      style: TextStyle(fontSize: 17), textAlign: TextAlign.center)),
               Icon(Icons.arrow_downward),
               TextField(
                 textAlign: TextAlign.center,

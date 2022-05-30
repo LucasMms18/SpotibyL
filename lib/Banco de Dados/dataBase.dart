@@ -1,6 +1,6 @@
 import 'package:home_page/Banco%20de%20Dados/registrerUsers.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class BaseData {
   Database? _database;
@@ -49,9 +49,8 @@ class BaseData {
   Future<List<Register>> findAll() async {
     Database db = await database;
     List select = await db.query('register');
-    List<Register> register = select.isNotEmpty
-        ? select.map((e) => Register.fromJson(e)).toList()
-        : [];
+    List<Register> register =
+        select.isNotEmpty ? select.map((e) => Register.fromJson(e)).toList() : [];
     print("$register");
     return register;
   }
@@ -60,12 +59,11 @@ class BaseData {
     Database db = await database;
     List select = await db.query('register',
         columns: ["email", "password"],
-        where: "email =? AND password = ?",
+        where: "email = ? AND password = ?",
         whereArgs: [email, password]);
     print(select);
-    List<Register> register = select.isNotEmpty
-        ? select.map((e) => Register.fromJson(e)).toList()
-        : [];
+    List<Register> register =
+        select.isNotEmpty ? select.map((e) => Register.fromJson(e)).toList() : [];
     print("$register");
     return register;
   }

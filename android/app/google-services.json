@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "459659826153",
+    "project_id": "spotibyl",
+    "storage_bucket": "spotibyl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459659826153:android:0f650233ce80df1ed93178",
+        "android_client_info": {
+          "package_name": "com.example.home_page"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459659826153-0mfbfghmlignfiaufcgd870rj35sak3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCENiDHuOvVdJtFVTuJAPsfAOBa_fCLGVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459659826153-0mfbfghmlignfiaufcgd870rj35sak3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

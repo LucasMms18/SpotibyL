@@ -10,16 +10,15 @@ class DataUsage extends StatefulWidget {
 class _DataUsageState extends State<DataUsage> {
   bool _userEntry = false;
   bool _userEntry2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black87),
-        title: Text(
-          "Uso de dados",
-          style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 22),
-        ),
+        title: Text("Uso de dados",
+            style: TextStyle(
+                color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 22)),
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
       ),

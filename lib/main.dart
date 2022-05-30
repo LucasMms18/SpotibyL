@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/screens/Account.dart';
-import 'package:home_page/screens/playlist.dart';
-import 'package:home_page/screens/Favoritos.dart';
-import 'package:home_page/screens/search.dart';
 import 'package:home_page/Login/Registrado.dart' as r;
 import 'package:home_page/config_user/email.dart';
 import 'package:home_page/config_user/phoneNumber.dart';
-import 'config_user/DataUsage.dart';
-import 'config_user/Notifications.dart';
-import 'config_user/Privacity.dart';
-import 'config_user/Profile.dart';
-import 'function/bottom_navigation_bar.dart';
+import 'package:home_page/screens/Account.dart';
+import 'package:home_page/screens/Favoritos.dart';
+import 'package:home_page/screens/playlist.dart';
+import 'package:home_page/screens/search.dart';
+
 import 'Login/RecuperarSenha.dart';
 import 'Login/Registrar.dart';
 import 'Login/logar.dart';
+import 'config_user/DataUsage.dart';
+import 'config_user/Notifications.dart';
+import 'config_user/Privacity.dart';
+import 'function/bottom_navigation_bar.dart';
 
 void main() {
   MaterialColor buildMaterialColor(Color color) {
@@ -44,7 +44,6 @@ void main() {
       "/Notifications": (context) => Notifications(),
       "/Privacity": (context) => Privacity(),
       "/DataUsage": (context) => DataUsage(),
-      "/Profile": (context) => Profile(),
       "/Search": (context) => Search(),
       "/HomePage": (context) => HomePage(),
       "/ButtonsPage": (context) => ButtonsPage(),
