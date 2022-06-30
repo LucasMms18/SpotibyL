@@ -19,7 +19,7 @@ class _RegistradoState extends State<Registrado> {
           centerTitle: true),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Column(children: <Widget>[
+        child: Column(children: [
           Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
@@ -27,7 +27,7 @@ class _RegistradoState extends State<Registrado> {
               height: 450),
           ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed("/HomePage");
+                Navigator.of(context).pushNamed("/LoginPage");
               },
               child: Text("Voltar para Login!"))
         ]),

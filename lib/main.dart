@@ -1,66 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/Login/Registrado.dart' as r;
-import 'package:home_page/config_user/email.dart';
-import 'package:home_page/config_user/phoneNumber.dart';
-import 'package:home_page/screens/Account.dart';
-import 'package:home_page/screens/Favoritos.dart';
-import 'package:home_page/screens/playlist.dart';
-import 'package:home_page/screens/search.dart';
+import 'package:home_page/screens/category_expense.dart';
+import 'package:home_page/screens/expenses.dart';
+import 'package:home_page/screens/home.dart';
+import 'package:home_page/screens/preferences.dart';
+import 'package:home_page/screens/projects.dart';
+import 'package:home_page/screens/reports.dart';
+import 'package:home_page/screens/routes.dart';
+import 'package:home_page/screens/type_of_coin.dart';
+import 'package:home_page/themes/theme_default.dart';
 
 import 'Login/RecuperarSenha.dart';
 import 'Login/Registrar.dart';
 import 'Login/logar.dart';
-import 'config_user/DataUsage.dart';
-import 'config_user/Notifications.dart';
-import 'config_user/Privacity.dart';
 import 'function/bottom_navigation_bar.dart';
 
 void main() {
-  MaterialColor buildMaterialColor(Color color) {
-    List strengths = <double>[.05];
-    Map<int, Color> swatch = {};
-    final int r = color.red, g = color.green, b = color.blue;
-
-    for (int i = 1; i < 10; i++) {
-      strengths.add(0.1 * i);
-    }
-    strengths.forEach((strength) {
-      final double ds = 0.5 - strength;
-      swatch[(strength * 1000).round()] = Color.fromRGBO(
-        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-        1,
-      );
-    });
-    return MaterialColor(color.value, swatch);
-  }
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
-    initialRoute: "/HomePage",
     routes: {
-      "/PhoneNumber": (context) => PhoneNumber(),
-      "/Email": (context) => Email(),
-      "/Notifications": (context) => Notifications(),
-      "/Privacity": (context) => Privacity(),
-      "/DataUsage": (context) => DataUsage(),
-      "/Search": (context) => Search(),
-      "/HomePage": (context) => HomePage(),
-      "/ButtonsPage": (context) => ButtonsPage(),
-      "/downloads": (context) => Playlist(),
-      "/Account": (context) => Account(),
-      "/checkBox": (context) => Favorites(),
+      "/Projects": (context) => Projects(),
+      "/TypeOfCoin": (context) => TypeOfCoin(),
+      "/CategoryExpense": (context) => CategoryExpense(),
+      "/Home": (context) => Home(),
+      "/Expenses": (context) => Expenses(),
+      "/LoginPage": (context) => LoginPage(),
+      "/BottomNavigation": (context) => BottomNavigation(),
+      "/Routes": (context) => Routes(),
+      "/Preferences": (context) => Preferences(),
+      "/Reports": (context) => Reports(),
       "/RecuperarSenha": (context) => RecuperarSenha(),
       "/Registrar": (context) => Registrar(),
       "/Registrado": (context) => r.Registrado(),
     },
-    theme: ThemeData(
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: buildMaterialColor(Color(0xff242526)),
-        accentColor: Colors.grey.shade500,
-      ),
-    ),
     debugShowCheckedModeBanner: false,
-    home: HomePage(),
+    home: LoginPage(),
+    theme: defaultThemeData(),
   ));
 }

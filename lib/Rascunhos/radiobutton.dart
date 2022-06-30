@@ -45,3 +45,20 @@ class _radioButtonState extends State<radioButton> {
     );
   }
 }
+
+buildProgressBar() {
+  return Column(
+    children: [
+      Container(
+          padding: EdgeInsets.only(left: 10, right: 10, top: 35),
+          child: LinearProgressIndicator(color: Colors.black, value: 0)),
+      Row(
+        children: [
+          Text('0:00', style: TextStyle(color: Colors.black)),
+          Expanded(child: Container()),
+          Text('3:00', style: TextStyle(color: Colors.black))
+        ],
+      )
+    ],
+  );
+}

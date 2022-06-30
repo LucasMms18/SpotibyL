@@ -1,9 +1,9 @@
-class Register {
+class RegisterUsers {
   final String name;
   final String email;
   final String password;
 
-  Register({
+  RegisterUsers({
     required this.name,
     required this.email,
     required this.password,
@@ -14,8 +14,8 @@ class Register {
     return 'Register{name: $name, email: $email, password: $password}';
   }
 
-  factory Register.fromJson(Map<String, dynamic> json) {
-    return Register(
+  factory RegisterUsers.fromJson(Map<String, dynamic> json) {
+    return RegisterUsers(
       name: json["name"] ?? "",
       email: json["email"] ?? "",
       password: json["password"] ?? "",
