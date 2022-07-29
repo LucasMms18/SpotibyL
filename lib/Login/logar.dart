@@ -1,9 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:home_page/Banco%20de%20Dados/data_base_projects.dart';
+import 'package:home_page/api/future_login.dart';
+import 'package:home_page/api/result.dart';
 import 'package:home_page/custom/custom_elevated_button.dart';
 import 'package:home_page/custom/custom_text_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 String logo = "imagens/logo.png";
 
@@ -15,7 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _email = TextEditingController(text: "teste@gmail.com");
+  TextEditingController _numberPhone = TextEditingController(text: "5554981436383");
   TextEditingController _password = TextEditingController(text: "teste123");
 
   bool hidePassword = true;
@@ -47,11 +49,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 80,
                 ),
                 CustomTextField(
                     title: "E-mail",
-                    controller: _email,
+                    controller: _numberPhone,
                     obscure: false,
                     icon: (Icons.email)),
                 SizedBox(
@@ -102,12 +104,21 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 35,
                 ),
                 CustomElevatedButton(
                   label: "Entrar",
-                  onPressed: () {
-                    _login(context);
+                  onPressed: () async {
+                    Result result = await login(_numberPhone.text, _password.text);
+                    print(result.toJson());
+                    if (result.status == 200) {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.setString("token", result.jwt!);
+                      preferences.setString("apiKey", result.apiKey!);
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          "/BottomNavigation", (route) => false);
+                    }
                   },
                 ),
                 ListTile(
@@ -140,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  _login(BuildContext context) {
+  /*_login(BuildContext context) {
     DataBaseMyControl().searchAll(_email.text, _password.text).then((value) {
       print(value);
       if (value.isNotEmpty) {
@@ -158,5 +169,5 @@ class _LoginPageState extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     });
-  }
+  }*/
 }

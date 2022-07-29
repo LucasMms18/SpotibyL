@@ -17,14 +17,7 @@ class _ExpensesState extends State<Expenses> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Despesas",
-          style: TextStyle(
-              fontSize: 25,
-              letterSpacing: 1.7,
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).colorScheme.primary),
-        ),
+        title: Text("Despesas"),
         leading: IconButton(
           icon: Icon(MdiIcons.close),
           onPressed: () => Navigator.popAndPushNamed(context, "/BottomNavigation"),
